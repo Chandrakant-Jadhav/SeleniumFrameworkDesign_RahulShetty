@@ -25,9 +25,6 @@ public class StandAloneTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/client");
-		
-		LandingPage landingPage = new LandingPage(driver);
-		
 		driver.findElement(By.id("userEmail")).sendKeys("chandujadhav96k+1204@gmail.com");
 		driver.findElement(By.id("userPassword")).sendKeys("Hello123@");
 		driver.findElement(By.id("login")).click();
@@ -89,6 +86,7 @@ public class StandAloneTest {
 		//Confirmation message assertion
 		String ConfirmationMsg = driver.findElement(By.cssSelector(".hero-primary")).getText();
 		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+		
 		// closing the driver
 		driver.quit();
 

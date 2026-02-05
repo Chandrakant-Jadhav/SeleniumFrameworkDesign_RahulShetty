@@ -6,21 +6,39 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
-	
+import Rahulshettyacademy.AbstractComponents.AbstractComponet;
+
+public class LandingPage extends AbstractComponet {
+
 	WebDriver driver;
-	
-	public LandingPage(WebDriver driver)
-	{
-		this.driver=driver;
+
+	public LandingPage(WebDriver driver) {
+		super(driver);
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
-		//WebElement userEmail= driver.findElement(By.id("userEmail"));
-		//pageFactory
-		
-		@FindBy(id="userEmail")
-		WebElement userEmail;
+	// WebElement userEmail= driver.findElement(By.id("userEmail"));
+	// pageFactory
 
+	@FindBy(id = "userEmail")
+	WebElement userEmail;
 
+	@FindBy(id = "userPassword")
+	WebElement passwordEle;
+
+	@FindBy(id = "login")
+	WebElement submit;
+
+	public ProductCatelogue loginApplication(String email, String password) {
+		userEmail.sendKeys(email);
+		passwordEle.sendKeys(password);
+		submit.click();
+		ProductCatelogue ProductCatelogue = new ProductCatelogue(driver);
+		return ProductCatelogue;
+	}
+
+	public void goTo() {
+		driver.get("https://rahulshettyacademy.com/client");
+	}
 }
