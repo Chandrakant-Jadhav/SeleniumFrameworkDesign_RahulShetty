@@ -1,17 +1,21 @@
-package rahulshettyacademy;
+package rahulshettyacademy.tests;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import Rahulshettyacademy.pageobjects.CartPage;
 import Rahulshettyacademy.pageobjects.CheckoutPage;
 import Rahulshettyacademy.pageobjects.ConfirmationPage;
 import Rahulshettyacademy.pageobjects.LandingPage;
+import Rahulshettyacademy.pageobjects.OrderPage;
 import Rahulshettyacademy.pageobjects.ProductCatelogue;
+import rahulshettyacademy.TestComponents.BaseTest;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
@@ -20,16 +24,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SubmitOrderTest {
+public class SubmitOrderTest extends BaseTest {
 
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		String productName = "ADIDAS ORIGINAL";
-		WebDriver driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().window().maximize();
-		LandingPage landingPage = new LandingPage(driver);
-		landingPage.goTo();
+	String productName = "ADIDAS ORIGINAL";
+
+	@Test
+	public void submitOrder() throws IOException, InterruptedException {
+
 		// To login to the application
 		ProductCatelogue ProductCatelogue = landingPage.loginApplication("chandujadhav96k+1204@gmail.com", "Hello123@");
 		// add to cart button
@@ -41,7 +42,6 @@ public class SubmitOrderTest {
 		Assert.assertTrue(match);
 		// clicking on checkout button
 		CheckoutPage CheckoutPage = cartPage.goToCheckout();
-
 		// SCrolling to the element
 		CheckoutPage.scrollToElement();
 		// Select Country
@@ -51,9 +51,14 @@ public class SubmitOrderTest {
 		// Confirmation message assertion
 		String ConfirmationMsg = ConfirmationPage.getConfirmationMessage();
 		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
-		// closing the driver
-		driver.quit();
 
+	}
+
+	@Test(dependsOnMethods = { "submitOrder" })
+	public void OrderHistoryTest() {
+		ProductCatelogue ProductCatelogue = landingPage.loginApplication("chandujadhav96k+1204@gmail.com", "Hello123@");
+		OrderPage OrderPage = ProductCatelogue.goToOrderPage();
+		Assert.assertTrue(OrderPage.VerifyOrderDisplay(productName));
 	}
 
 }
