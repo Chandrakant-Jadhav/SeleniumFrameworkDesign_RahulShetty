@@ -25,7 +25,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class SubmitOrderTest extends BaseTest {
+public class SubmitOrderTest2 extends BaseTest {
 
 	String productName = "ADIDAS ORIGINAL";
 

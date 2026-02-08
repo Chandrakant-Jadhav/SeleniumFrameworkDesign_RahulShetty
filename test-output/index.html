@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Suite" class="navigator-link">
-              <span class="suite-name border-passed">Suite</span>
+              <span class="suite-name border-failed">Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
-                    <span>C:\Users\Abcom\eclipse-workspace\SeleniumFrameworkDesign_RahulShetty\testSuites\ErrorValidationTests.xml</span>
+                    <span>C:\Users\Abcom\eclipse-workspace\SeleniumFrameworkDesign_RahulShetty\testSuites\Purchase.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods failed suite-Suite"> (hide)</a> <!-- hide-methods failed suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods failed suite-Suite"> (show)</a> <!-- show-methods failed suite-Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="rahulshettyacademy.tests.SubmitOrderTest" class="method navigator-link" hash-for-method="submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, iphone 13 pro)">submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, iphone 13 pro)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,7 +117,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="rahulshettyacademy.tests.ErrorValidationsTest" class="method navigator-link" hash-for-method="loginErrorValidation">loginErrorValidation</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="rahulshettyacademy.tests.SubmitOrderTest" class="method navigator-link" hash-for-method="submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, ADIDAS ORIGINAL)">submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, ADIDAS ORIGINAL)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -118,17 +132,44 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Suite" class="panel Suite">
-          <div class="suite-Suite-class-passed">
+          <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">rahulshettyacademy.tests.ErrorValidationsTest</span>
+              <img src="failed.png"/>
+              <span class="class-name">rahulshettyacademy.tests.SubmitOrderTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="loginErrorValidation">
-                  </a> <!-- loginErrorValidation -->
-                  <span class="method-name">loginErrorValidation</span>
+                  <a name="submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, iphone 13 pro)">
+                  </a> <!-- submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, iphone 13 pro) -->
+                  <span class="method-name">submitOrder</span>
+                  <span class="parameters">(chandujadhav96k+1204@gmail.com,Hello123@,iphone 13 pro)</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;org.openqa.selenium.WebElement.findElement(org.openqa.selenium.By)&quot; because &quot;prod&quot; is null
+	at Rahulshettyacademy.pageobjects.ProductCatelogue.addProductToCart(ProductCatelogue.java:50)
+	at rahulshettyacademy.tests.SubmitOrderTest.submitOrder(SubmitOrderTest.java:38)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 15 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-failed -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">rahulshettyacademy.tests.SubmitOrderTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, ADIDAS ORIGINAL)">
+                  </a> <!-- submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, ADIDAS ORIGINAL) -->
+                  <span class="method-name">submitOrder</span>
+                  <span class="parameters">(chandujadhav96k+1204@gmail.com,Hello123@,ADIDAS ORIGINAL)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -136,7 +177,7 @@
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Abcom\eclipse-workspace\SeleniumFrameworkDesign_RahulShetty\testSuites\ErrorValidationTests.xml</span>
+            <span class="header-content">C:\Users\Abcom\eclipse-workspace\SeleniumFrameworkDesign_RahulShetty\testSuites\Purchase.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -145,12 +186,12 @@
 &lt;suite parallel=&quot;tests&quot; name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;groups&gt;
     &lt;run&gt;
-      &lt;include name=&quot;ErrorHandling&quot;/&gt;
+      &lt;include name=&quot;Purchase&quot;/&gt;
     &lt;/run&gt;
   &lt;/groups&gt;
   &lt;groups&gt;
     &lt;run&gt;
-      &lt;include name=&quot;ErrorHandling&quot;/&gt;
+      &lt;include name=&quot;Purchase&quot;/&gt;
     &lt;/run&gt;
   &lt;/groups&gt;
   &lt;test thread-count=&quot;5&quot; parallel=&quot;tests&quot; name=&quot;Submit Order Test&quot;&gt;
@@ -188,10 +229,10 @@
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="test-group">
-              <span class="test-group-name">ErrorHandling</span>
+              <span class="test-group-name">Purchase</span>
               <br/>
               <div class="method-in-group">
-                <span class="method-in-group-name">loginErrorValidation</span>
+                <span class="method-in-group-name">submitOrder</span>
                 <br/>
               </div> <!-- method-in-group -->
             </div> <!-- test-group -->
@@ -211,16 +252,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'loginErrorValidation')
-data.setCell(0, 2, 'rahulshettyacademy.tests.ErrorValidationsTest')
-data.setCell(0, 3, 931);
+data.setCell(0, 1, 'submitOrder')
+data.setCell(0, 2, 'rahulshettyacademy.tests.SubmitOrderTest')
+data.setCell(0, 3, 4803);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'submitOrder')
+data.setCell(1, 2, 'rahulshettyacademy.tests.SubmitOrderTest')
+data.setCell(1, 3, 4169);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 11 seconds</span>
+              <span class="suite-total-time">Total running time: 21 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -241,8 +286,6 @@ return data;
             <div class="ignored-class-div">
               <span class="ignored-class-name">rahulshettyacademy.tests.SubmitOrderTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">submitOrder</span>
-                <br/>
                 <span class="ignored-method-name">OrderHistoryTest</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
@@ -251,6 +294,8 @@ return data;
               <span class="ignored-class-name">rahulshettyacademy.tests.ErrorValidationsTest</span>
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">productErrorValidation</span>
+                <br/>
+                <span class="ignored-method-name">loginErrorValidation</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -262,18 +307,32 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">rahulshettyacademy.tests.ErrorValidationsTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">rahulshettyacademy.tests.SubmitOrderTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
                 <span class="method-name">launchApplication</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">loginErrorValidation</span>
-                <span class="method-start">9884 ms</span>
+                <span class="method-name">submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, ADIDAS ORIGINAL)</span>
+                <span class="method-start">8699 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">10821 ms</span>
+                <span class="method-start">13506 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">launchApplication</span>
+                <span class="method-start">13984 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">submitOrder(chandujadhav96k+1204@gmail.com, Hello123@, iphone 13 pro)</span>
+                <span class="method-start">16788 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">20966 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
