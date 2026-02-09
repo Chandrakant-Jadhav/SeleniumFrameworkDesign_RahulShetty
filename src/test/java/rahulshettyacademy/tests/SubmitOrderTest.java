@@ -18,6 +18,7 @@ import rahulshettyacademy.TestComponents.BaseTest;
 
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -27,18 +28,20 @@ import org.openqa.selenium.WebElement;
 
 public class SubmitOrderTest extends BaseTest {
 
-	String productName = "ADIDAS ORIGINAL";
+	String productName ="ADIDAS ORIGINAL";
 
 	@Test(dataProvider="getData",groups= {"Purchase"})
-	public void submitOrder(String email, String password, String productName) throws IOException, InterruptedException {
+	public void submitOrder(HashMap<String,String>input) throws IOException, InterruptedException {
+		
+		//this.orderedProductName = productName;
 
 		// To login to the application
-		ProductCatelogue ProductCatelogue = landingPage.loginApplication(email, password);
+		ProductCatelogue ProductCatelogue = landingPage.loginApplication(input.get("email"), input.get("password"));
 		// add to cart button
-		ProductCatelogue.addProductToCart(productName);
+		ProductCatelogue.addProductToCart(input.get("product"));
 		// going to cart page
 		CartPage cartPage = ProductCatelogue.goToCartPage();
-		boolean match = cartPage.VerifyProductDisplay(productName);
+		boolean match = cartPage.VerifyProductDisplay(input.get("product"));
 		// assertion to verify the product is in the cart
 		Assert.assertTrue(match);
 		// clicking on checkout button
@@ -65,7 +68,18 @@ public class SubmitOrderTest extends BaseTest {
 	@DataProvider
 	public Object[][] getData()
 	{
-		return new Object [] [] {{"chandujadhav96k+1204@gmail.com","Hello123@", "ADIDAS ORIGINAL"}, {"chandujadhav96k+1204@gmail.com", "Hello123@", "iphone 13 pro"}};
+		HashMap<String,String>map=new HashMap<String,String>();
+		map.put("email", "chandujadhav96k+1204@gmail.com");
+		map.put("password", "Hello123@");
+		map.put("product", "ADIDAS ORIGINAL");
+		
+		HashMap<String,String>map1=new HashMap<String,String>();
+		map1.put("email", "chandujadhav96k+1204@gmail.com");
+		map1.put("password", "Hello123@");
+		map1.put("product", "ADIDAS ORIGINAL");
+		
+		
+		return new Object [] [] {{map}, {map1}};
 	}
 
 }

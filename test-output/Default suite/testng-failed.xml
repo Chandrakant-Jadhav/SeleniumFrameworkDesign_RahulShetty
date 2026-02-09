@@ -7,7 +7,7 @@
         <methods>
           <include name="tearDown"/>
           <include name="OrderHistoryTest"/>
-          <include name="submitOrder" invocation-numbers="1"/>
+          <include name="submitOrder" invocation-numbers="0"/>
           <include name="launchApplication"/>
         </methods>
       </class> <!-- rahulshettyacademy.tests.SubmitOrderTest -->
