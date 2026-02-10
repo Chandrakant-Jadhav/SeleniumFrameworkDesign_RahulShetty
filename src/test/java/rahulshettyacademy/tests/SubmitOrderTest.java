@@ -16,13 +16,17 @@ import Rahulshettyacademy.pageobjects.OrderPage;
 import Rahulshettyacademy.pageobjects.ProductCatelogue;
 import rahulshettyacademy.TestComponents.BaseTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -57,6 +61,7 @@ public class SubmitOrderTest extends BaseTest {
 		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 
 	}
+	
 
 	@Test(dependsOnMethods = { "submitOrder" })
 	public void OrderHistoryTest() {
@@ -64,6 +69,20 @@ public class SubmitOrderTest extends BaseTest {
 		OrderPage OrderPage = ProductCatelogue.goToOrderPage();
 		Assert.assertTrue(OrderPage.VerifyOrderDisplay(productName));
 	}
+	
+	
+	public String getScreenShot(String testCaseName) throws IOException
+	{
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File source= ts.getScreenshotAs(OutputType.FILE);
+		File file=new File(System.getProperty("user.dir")+"//reports//" + testCaseName+ ".png" );
+		FileUtils.copyFile(source, file);
+		
+		return System.getProperty("user.dir")+"//reports//" + testCaseName+ ".png";
+		
+	}
+	
+	
 	
 	@DataProvider
 	public Object[][] getData() throws IOException
@@ -83,7 +102,6 @@ public class SubmitOrderTest extends BaseTest {
 //	}
 	
 	
-
 //	HashMap<String,String>map=new HashMap<String,String>();
 //	map.put("email", "chandujadhav96k+1204@gmail.com");
 //	map.put("password", "Hello123@");
