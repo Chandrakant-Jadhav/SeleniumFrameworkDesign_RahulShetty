@@ -37,8 +37,11 @@ public class BaseTest {
 		        + "\\src\\main\\java\\Rahulshettyacademy\\resources\\GlobalData.properties"
 		);
 		prop.load(fis);
+		
+		//Using ternary operator to choose the browser
+		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : prop.getProperty("browser");
 
-		String browserName = prop.getProperty("browser");
+		//prop.getProperty("browser");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
