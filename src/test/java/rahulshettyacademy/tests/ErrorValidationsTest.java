@@ -10,10 +10,11 @@ import Rahulshettyacademy.pageobjects.CheckoutPage;
 import Rahulshettyacademy.pageobjects.ConfirmationPage;
 import Rahulshettyacademy.pageobjects.ProductCatelogue;
 import rahulshettyacademy.TestComponents.BaseTest;
+import rahulshettyacademy.TestComponents.Retry;
 
 public class ErrorValidationsTest extends BaseTest {
 
-	@Test(groups= {"ErrorHandling"})
+	@Test(groups= {"ErrorHandling"},retryAnalyzer=Retry.class)
 	public void loginErrorValidation() throws IOException, InterruptedException {
 		landingPage.loginApplication("chandujadhav+WrongEmail+QA@gmail.com", "HelloQAA");
 		Assert.assertEquals("Incorrect email password.", landingPage.getErrorMessage());

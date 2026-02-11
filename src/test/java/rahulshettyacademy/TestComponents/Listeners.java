@@ -16,41 +16,39 @@ import Rahulshettyacademy.resources.ExtentReporterNG;
 public class Listeners extends BaseTest implements ITestListener {
 	ExtentTest test;
 	ExtentReports extent = ExtentReporterNG.getReportObject();
+	//Thread Safe
+	ThreadLocal <ExtentTest>extentTest= new ThreadLocal<ExtentTest>();
 
 	@Override
 	public void onTestStart(ITestResult result) {
 		test = extent.createTest(result.getMethod().getMethodName());
-
+		//Assign Unique thread Id (Error Validation) Test 
+		extentTest.set(test);;
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		test.log(Status.PASS, "Test Passed");
+		extentTest.get().log(Status.PASS, "Test Passed");
 
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		// Screenshot, Attach to report
-		test.fail(result.getThrowable());
+	    // Screenshot, Attach to report
+		extentTest.get().fail(result.getThrowable());
 
-		try {
-			driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-
-			String filePath = null;
-			try {
-				filePath = getScreenShot(result.getMethod().getMethodName(), driver);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			test.addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
-
-		}
-
+	    try {
+	        // Get the driver from the test class
+	        driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+	        
+	        // Capture screenshot - THIS SHOULD BE HERE, NOT IN CATCH BLOCK
+	        String filePath = getScreenShot(result.getMethod().getMethodName(), driver);
+	        extentTest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+	        
+	    } catch (Exception e) {
+	    	System.err.println("Failed to capture screenshot: " + e.getMessage());
+	        e.printStackTrace();
+	    }
 	}
 
 	@Override
