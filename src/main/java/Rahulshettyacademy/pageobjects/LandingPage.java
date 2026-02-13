@@ -46,8 +46,9 @@ public class LandingPage extends AbstractComponet {
 		waitForWebElementToAppear(errorMessage);
 		return errorMessage.getText();
 	}
-
+	
 	public void goTo() {
 		driver.get("https://rahulshettyacademy.com/client");
 	}
+	
 }

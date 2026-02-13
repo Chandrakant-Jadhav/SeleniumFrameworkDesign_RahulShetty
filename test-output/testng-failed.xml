@@ -4,10 +4,23 @@
   <listeners>
     <listener class-name="rahulshettyacademy.TestComponents.Listeners"/>
   </listeners>
+  <test thread-count="5" parallel="tests" name="Submit Order Test(failed)">
+    <classes>
+      <class name="rahulshettyacademy.tests.SubmitOrderTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="OrderHistoryTest"/>
+          <include name="submitOrder" invocation-numbers="0 1"/>
+          <include name="launchApplication"/>
+        </methods>
+      </class> <!-- rahulshettyacademy.tests.SubmitOrderTest -->
+    </classes>
+  </test> <!-- Submit Order Test(failed) -->
   <test thread-count="5" parallel="tests" name="ErrorValidations Test(failed)">
     <classes>
       <class name="rahulshettyacademy.tests.ErrorValidationsTest">
         <methods>
+          <include name="productErrorValidation"/>
           <include name="loginErrorValidation"/>
           <include name="tearDown"/>
           <include name="launchApplication"/>
