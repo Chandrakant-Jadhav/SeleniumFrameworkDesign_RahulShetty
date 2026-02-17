@@ -18,6 +18,23 @@
 	</properties>
 
 	<dependencies>
+	
+	<!-- Source: https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-java</artifactId>
+    <version>7.34.2</version>
+    <scope>compile</scope>
+</dependency>
+
+<!-- Source: https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>7.34.2</version>
+    <scope>compile</scope>
+</dependency>
+	
 		<dependency>
 			<!--
 			Source:https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -88,7 +105,7 @@
 		</profile>
 
 		<profile>
-			<id> Purchase</id>
+			<id>Purchase</id>
 			<build>
 				<pluginManagement>
 					<plugins>
@@ -110,7 +127,7 @@
 		</profile>
 
 		<profile>
-			<id> ErrorValidation</id>
+			<id>ErrorValidation</id>
 			<build>
 				<pluginManagement>
 					<plugins>
