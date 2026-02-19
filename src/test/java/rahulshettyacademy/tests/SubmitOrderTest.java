@@ -42,6 +42,7 @@ public class SubmitOrderTest extends BaseTest {
 		// To login to the application
 		ProductCatelogue ProductCatelogue = landingPage.loginApplication(input.get("email"), input.get("password"));
 		// add to cart button
+		List<WebElement> products = ProductCatelogue.getProductList();
 		ProductCatelogue.addProductToCart(input.get("product"));
 		// going to cart page
 		CartPage cartPage = ProductCatelogue.goToCartPage();
