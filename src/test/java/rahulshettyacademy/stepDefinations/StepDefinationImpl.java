@@ -11,8 +11,6 @@ import Rahulshettyacademy.pageobjects.CheckoutPage;
 import Rahulshettyacademy.pageobjects.ConfirmationPage;
 import Rahulshettyacademy.pageobjects.LandingPage;
 import Rahulshettyacademy.pageobjects.ProductCatelogue;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -50,7 +48,8 @@ public class StepDefinationImpl extends BaseTest {
 		boolean match =cartPage.VerifyProductDisplay(productName);
 		Assert.assertTrue(match);
 		CheckoutPage CheckoutPage = cartPage.goToCheckout();
-		// SCrolling to the element
+		
+		// Scrolling to the element
 		CheckoutPage.scrollToElement();
 		CheckoutPage.selectCountry("India");
 		ConfirmationPage = CheckoutPage.submitOrder();
