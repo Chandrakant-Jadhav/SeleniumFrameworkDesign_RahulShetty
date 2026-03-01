@@ -11,7 +11,10 @@ import Rahulshettyacademy.pageobjects.CheckoutPage;
 import Rahulshettyacademy.pageobjects.ConfirmationPage;
 import Rahulshettyacademy.pageobjects.LandingPage;
 import Rahulshettyacademy.pageobjects.ProductCatelogue;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import rahulshettyacademy.TestComponents.BaseTest;
 
@@ -21,10 +24,9 @@ public class StepDefinationImpl extends BaseTest {
 	ConfirmationPage ConfirmationPage;
 	
 	
-	
-	@Given("I landed on Ecommerce page")
+	@Given("I landed on Ecommerce website page")
 	public void i_landed_on_ecommerce_page() throws IOException {
-		landingPage=launchApplication();
+		landingPage = launchApplication();
 	}
 	
 	@Given ("^Logged in with username (.+) and (.+)$")
@@ -33,7 +35,7 @@ public class StepDefinationImpl extends BaseTest {
 
 	}
 	
-	@When ("^I add product (.+) to Cart$")
+	@When ("^I add product (.+) to cart$")
 	public void i_add_product_to_cart(String productName) throws InterruptedException
 	{
 		List<WebElement> products = productCatelogue.getProductList();
@@ -53,6 +55,13 @@ public class StepDefinationImpl extends BaseTest {
 		CheckoutPage.selectCountry("India");
 		ConfirmationPage = CheckoutPage.submitOrder();
 		
+	}
+	
+	//Then "Order Placed Successfully" message is displayed on confirmation
+	@Then("{string} message is displayed on confirmation page")
+	public void message_is_displayed_on_confirmation_page(String string) {
+		String ConfirmationMsg = ConfirmationPage.getConfirmationMessage();
+		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase(string));
 	}
 	
 }

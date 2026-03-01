@@ -59,7 +59,7 @@ public class SubmitOrderTest extends BaseTest {
 
 		// Confirmation message assertion
 		String ConfirmationMsg = ConfirmationPage.getConfirmationMessage();
-		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase("Order Placed Successfully"));
 
 	}
 	

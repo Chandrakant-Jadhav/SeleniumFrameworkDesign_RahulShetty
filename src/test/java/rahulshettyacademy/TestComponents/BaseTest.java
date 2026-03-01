@@ -44,28 +44,33 @@ public class BaseTest {
 		String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") : prop.getProperty("browser");
 
 		//prop.getProperty("browser");
-
-		if (browserName.contains("chrome")) {
-			ChromeOptions options =new ChromeOptions();
-			if(browserName.contains("headless"))
-			{
-				options.addArguments("headless");
-			}
-			
-			driver = new ChromeDriver(options);
-			driver.manage().window().setSize(new Dimension (1440,900));
-
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
-
-		} else if (browserName.equalsIgnoreCase("edge")) {
-			driver = new EdgeDriver();
-		}
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().window().maximize();
 		
-		return driver;
+		if (browserName == null || browserName.trim().isEmpty()) {
+	        throw new RuntimeException("Browser name is NULL or EMPTY! Check GlobalData.properties");
+	    }
 
+	    browserName = browserName.trim(); // ✅ Trim any extra spaces
+
+	    if (browserName.contains("chrome")) {
+	        ChromeOptions options = new ChromeOptions();
+	        if (browserName.contains("headless")) {
+	            options.addArguments("headless");
+	        }
+	        driver = new ChromeDriver(options);
+	        driver.manage().window().setSize(new Dimension(1440, 900));
+
+	    } else if (browserName.equalsIgnoreCase("firefox")) {
+	        driver = new FirefoxDriver();
+
+	    } else if (browserName.equalsIgnoreCase("edge")) {
+	        driver = new EdgeDriver();
+
+	    } else {
+	        // ✅ This will now tell you exactly what wrong value is being read
+	        throw new RuntimeException(">>> No matching browser found for: [" + browserName + "]");
+	    }
+
+	    return driver;
 	}
 	
 	public List<HashMap<String, String>> getJsonDataToMap(String filePath) throws IOException

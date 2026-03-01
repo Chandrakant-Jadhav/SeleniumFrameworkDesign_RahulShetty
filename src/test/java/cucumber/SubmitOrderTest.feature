@@ -6,7 +6,7 @@ Given I landed on Ecommerce website page
     Given Logged in with username <name> and <password>
     When I add product <productName> to cart
     And Checkout <productName> and submit the order
-    Then "THANKYOU FOR THE ORDER." message is displayed on confirmation
+    Then "Order Placed Successfully" message is displayed on confirmation page
     
     Examples:
     | name                         | password   |productName    |
