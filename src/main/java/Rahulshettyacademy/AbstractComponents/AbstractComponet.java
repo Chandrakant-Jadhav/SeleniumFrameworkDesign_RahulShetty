@@ -20,7 +20,7 @@ public class AbstractComponet {
 	@FindBy(css = "[routerlink*='cart']")
 	WebElement cartHeader;
 	
-	@FindBy(css = "[routerlink*='myorders']")
+	@FindBy(css ="[routerlink*='myorders']") 
 	WebElement orderHeader;
 	
 
@@ -60,6 +60,7 @@ public class AbstractComponet {
 	}
 	
 	public OrderPage goToOrderPage() {
+		waitForElementToAppear(By.xpath("//button[@routerlink='/dashboard/myorders']"));
 		orderHeader.click();
 		OrderPage OrderPage = new OrderPage(driver);
 		return OrderPage;

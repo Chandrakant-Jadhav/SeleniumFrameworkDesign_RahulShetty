@@ -19,13 +19,14 @@ public class CartPage extends AbstractComponet {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//*[@class=\"cartSection\"]/h3")
+	@FindBy(xpath = "//div[@class='cartSection']//h3")
 	List<WebElement> cartProducts;
 
 	@FindBy(css = ".totalRow button")
 	WebElement checkouEle;
 
 	public boolean VerifyProductDisplay(String productName) {
+		waitForElementToAppear(By.xpath("//div[@class='cartSection']//h3"));
 		boolean match = cartProducts.stream()
 				.anyMatch(cartProduct -> cartProduct.getText().equalsIgnoreCase(productName));
 		return match;

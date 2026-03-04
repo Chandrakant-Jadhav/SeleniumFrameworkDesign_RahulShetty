@@ -30,7 +30,6 @@ public class StepDefinationImpl extends BaseTest {
 	@Given ("^Logged in with username (.+) and (.+)$")
 	public void logged_in_with_username_and_Password(String username, String password) {
 		productCatelogue=landingPage.loginApplication(username, password);
-
 	}
 	
 	@When ("^I add product (.+) to cart$")
@@ -61,6 +60,14 @@ public class StepDefinationImpl extends BaseTest {
 	public void message_is_displayed_on_confirmation_page(String string) {
 		String ConfirmationMsg = ConfirmationPage.getConfirmationMessage();
 		Assert.assertTrue(ConfirmationMsg.equalsIgnoreCase(string));
+		driver.close();
+	}
+	
+	@Then("{string} message is displayed.")
+	public void message_is_displayed_on_error_message(String string) {
+		String errorMsg = landingPage.getErrorMessage();
+		Assert.assertEquals(string, errorMsg);
+		driver.close();
 	}
 	
 }

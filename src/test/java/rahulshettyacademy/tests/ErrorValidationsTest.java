@@ -17,7 +17,7 @@ public class ErrorValidationsTest extends BaseTest {
 	@Test(groups= {"ErrorHandling"},retryAnalyzer=Retry.class)
 	public void loginErrorValidation() throws IOException, InterruptedException {
 		landingPage.loginApplication("chandujadhav+WrongEmail+QA@gmail.com", "HelloQAA");
-		Assert.assertEquals("Incorrect email password.", landingPage.getErrorMessage());
+		Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
 
 	}
 
